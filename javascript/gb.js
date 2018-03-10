@@ -13,6 +13,7 @@ function getGifs() {
       }).then(function(response) { 
           var gifs = response.data;
           console.log(gifs);
+          $('#gifs').empty();
           for (var i=0; i<gifs.length;i++) {
                 console.log("length: " + gifs.length);
                 var gif = gifs[i];
@@ -43,8 +44,10 @@ function getGifs() {
     function getButtons() {
         $("#buttons-view").empty();
         for (var i=0; i<gifArr.length; i++) {
-            var btn=$("<button>");
-            btn.addClass("gif-btn");
+            var btn=$('<button>');
+            btn.addClass("gif-btn btn btn-success");
+            // btn.addClass("btn");
+            // btn.addClass("btn-success");
             btn.attr("data-name", gifArr[i]);
             btn.text(gifArr[i]);
             $("#buttons-view").append(btn);
@@ -57,8 +60,9 @@ function getGifs() {
         gifArr.push(gifAdd);
         getButtons();
         console.log("added to array");
+        $('#gif-input').empty();
     });
-
+    
     $(document).on("click",".gif-btn", getGifs);
     console.log("when does this happen");
 

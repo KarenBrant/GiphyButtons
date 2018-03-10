@@ -1,0 +1,46 @@
+.jumbotron {
+    background-color: green;
+    opacity: .8;
+    color: white;
+}
+
+h4 {
+    margin-left: 20px;
+    border-color: green;
+    border-style: solid 2px;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    background-position: center center;
+    margin: 10px 10px;
+}
+
+#gifs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
+button {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+label {
+    margin-left: 20px;
+}
+
+#gif-input {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#add-gif {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
