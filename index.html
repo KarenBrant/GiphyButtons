@@ -10,16 +10,20 @@
 </head>
 <body>
     <h1 class="jumbotron">Superhero Gifs</h1>
-    <h4>Press a button or enter a Superhero name and click the "Add a Superhero" button.
-        Then click the new button to see the gifs for that Superhero.
-    </h3>
+    <img id="super" src="images/Superman_shield.svg.png" alt="Superman logo">
+    <img id="ww" src="images/wonderwoman.gif" alt="Wonder Woman logo">
+    <h4>Click an existing button or enter a Superhero name in the box and click the "Add a Superhero" button.
+        Then click the new button that was created to see the gifs for that Superhero.  Click on a 
+        gif to animate it.  Click it again to stop it.
+    </h4>
+    <br><br>
     <div id="buttons-view"></div>
     <form id="gif-form">
         <label for="gif-input">Add a Superhero</label>
         <input type="text" id="gif-input">
         <br>
 
-        <input id="add-gif" type="submit" value="Add a Superhero" class="btn btn-success">
+        <input id="add-gif" type="submit" value="Add a Superhero" class="btn btn-primary">
     </form>
     <div id="gifs" class="images"></div> 
     <div id="gifs-appear"></div>

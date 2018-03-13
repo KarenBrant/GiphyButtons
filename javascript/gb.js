@@ -1,6 +1,5 @@
-var el;
-var still;
-var gifArr = ["batman","wonder woman"];
+
+var topics = ["batman","wonder woman"];
 
 function getGifs() {
     var eachGif = $(this).attr("data-name");
@@ -17,10 +16,17 @@ function getGifs() {
           for (var i=0; i<gifs.length;i++) {
                 console.log("length: " + gifs.length);
                 var gif = gifs[i];
-                var image = gif.images.downsized.url;
-                console.log(gif);
-                el = $('<div class="gif">' + '<img src="' + image + '">' + '</div>')
-                still = gif.images.downsized_still.url;
+                var animated = gif.images.downsized.url;
+                var still = gif.images.downsized_still.url;
+                var rating = gif.rating;
+                // console.log(animated);
+                var el = $('<div class="image" style="background-image: url(' + still + ')"></div>');
+                var rate = $('<p id="rating" class="text-center">').text("Rating: " + rating);
+                el.append(rate);
+        
+                el.data('active', false);
+                el.data('still', still);
+                el.data('animated', animated);
                 $('#gifs').append(el);
             }  
         });
@@ -28,28 +34,25 @@ function getGifs() {
     
     function toggleGif() {
         console.log("toggleGif");
-        el.data('active', false);
-        el.data('still', still);
-        el.data('animated', animated);
-        $(document).on('click', '.image', toggleGif);
-            if ((this).data('active')) {
-                $(this).data('active', false);
-                $(this).css('background-image', 'url(' +$(this).data("still") + ')');
-            } else {
-                $(this).data('active', true);
-                $(this).css('background-image', 'url(' +$(this).data("animated") + ')');
-            }
+        if ($(this).data('active')) {
+            $(this).data('active', false);
+            $(this).css('background-image', 'url(' +$(this).data("still") + ')');
+        } else {
+            $(this).data('active', true);
+            $(this).css('background-image', 'url(' +$(this).data("animated") + ')');
+        }
     }
+    $(document).on('click', '.image', toggleGif);
     
     function getButtons() {
         $("#buttons-view").empty();
-        for (var i=0; i<gifArr.length; i++) {
+        for (var i=0; i<topics.length; i++) {
             var btn=$('<button>');
-            btn.addClass("gif-btn btn btn-success");
+            btn.addClass("gif-btn btn btn-primary");
             // btn.addClass("btn");
             // btn.addClass("btn-success");
-            btn.attr("data-name", gifArr[i]);
-            btn.text(gifArr[i]);
+            btn.attr("data-name", topics[i]);
+            btn.text(topics[i]);
             $("#buttons-view").append(btn);
         }
     }
@@ -57,15 +60,13 @@ function getGifs() {
     $("#add-gif").on("click", function(event){
         event.preventDefault();
         var gifAdd = $("#gif-input").val().trim();
-        gifArr.push(gifAdd);
+        topics.push(gifAdd);
         getButtons();
         console.log("added to array");
-        $('#gif-input').empty();
+        // $('#gif-input').empty();
     });
     
     $(document).on("click",".gif-btn", getGifs);
     console.log("when does this happen");
 
     getButtons();
-    // getGifs(); 
-    // toggleGif();  
